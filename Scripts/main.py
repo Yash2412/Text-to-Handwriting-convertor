@@ -80,7 +80,7 @@ def getWords():
         ch = chr(ord(ch) + 1) 
 
     
-    ttt = np.ones([125,80], dtype = np.uint8)
+    ttt = np.ones([125,random.randint(70, 100)], dtype = np.uint8)
     ttt[:] = 255
     words[' '] = ttt
     
@@ -95,34 +95,35 @@ def plotChar():
 
 def resizeChar():
     for i in words:
+        top = random.randint(40,50)
         if i=='b' or i=='d' or i=='f' or i=='h' or i=='k' or i=='l'  or i=='t'  :   
-            on = np.ones([50,words[i].shape[1]], dtype = np.uint8)
+            on = np.ones([top,words[i].shape[1]], dtype = np.uint8)
             on[:] = 255
-            temp = cv2.resize(words[i],(words[i].shape[1], 125))
+            temp = cv2.resize(words[i],(words[i].shape[1], 175-top))
             words[i] = np.vstack((temp,on))
         elif i=='g' or i=='p' or i=='q' or i=='y':
-            on = np.ones([50,words[i].shape[1]], dtype = np.uint8)
+            on = np.ones([top,words[i].shape[1]], dtype = np.uint8)
             on[:] = 255
-            temp = cv2.resize(words[i],(words[i].shape[1], 125))
+            temp = cv2.resize(words[i],(words[i].shape[1], 175-top))
             words[i] = np.vstack((on,temp))
         elif i == 'j':
-            on = np.ones([50,words[i].shape[1]], dtype = np.uint8)
+            on = np.ones([top,words[i].shape[1]], dtype = np.uint8)
             on[:] = 255
             v = words[i].shape[1] // 2
             cv2.circle(on, (v+v//2,25), 5, 0, -1)
-            temp = cv2.resize(words[i],(words[i].shape[1], 125))
+            temp = cv2.resize(words[i],(words[i].shape[1], 175-top))
             words[i] = np.vstack((on,temp))
         elif i == 'i':
-            on = np.ones([50,words[i].shape[1]], dtype = np.uint8)
+            on = np.ones([top,words[i].shape[1]], dtype = np.uint8)
             on[:] = 255
             v = words[i].shape[1] // 2
-            temp = cv2.resize(words[i],(words[i].shape[1], 75))
+            temp = cv2.resize(words[i],(words[i].shape[1], 175-(2*top)))
             words[i] = np.vstack((on,temp,on))
             words[i] = cv2.circle(words[i], (v,25), 5, 0, -1)
         else:
-            on = np.ones([50,words[i].shape[1]], dtype = np.uint8)
+            on = np.ones([top,words[i].shape[1]], dtype = np.uint8)
             on[:] = 255
-            temp = cv2.resize(words[i],(words[i].shape[1], 75))
+            temp = cv2.resize(words[i],(words[i].shape[1], 175-(2*top)))
             words[i] = np.vstack((on,temp,on))
 
 
