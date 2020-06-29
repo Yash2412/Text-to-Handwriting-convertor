@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to handwriting convertor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form" action="/run_script" method="POST" class="col-md-9 mx-auto" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">
+                    <h5>Enter the paragraph to convert</h5>
+                </label>
+                <textarea class="form-control" id="sentence" name="sentence" rows="6" required></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">
+                    <h5>Upload a image demo containing handwritten words </h5>
+                </label>
+                <input type="file" class="form-control-file" name="words" id="words" required>
+            </div>
+            <br>
+            <div class="form-inline">
+                <label class="my-1 mr-2" for="font_size"><h5>Font Size</h5></label>
+                <select class="custom-select my-3 mr-sm-4" name="font_size" id="font_size">
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15" selected>15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary " style="float: right;">CONVERT</button>
+            
+            <div class="result">
+                <h4>Output</h4>
+                <a href="../Result.pdf" target="_blank">
+                    Click here to view the Result
+                </a>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <!-- <script>
+        $("form").submit(function(e){
+            e.preventDefault()
+            var dat = $(this).serialize()
+            console.log(dat)
+            $.post('/run_script', dat[0] , function(data){
+                console.log(data)
+            })
+        });
+    </script> -->
+
+    <script>
+        if (<%= showResult %>) {
+            $('.result').show()
+        }
+        else {
+            $('.result').hide()
+        }
+
+    </script>
+
+</body>
+
+</html>
