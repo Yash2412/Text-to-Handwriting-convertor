@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to handwriting convertor</title>
+    <script src="./js/jquery.js"></script>
+</head>
+<body>
+
+    <form id="form" action="/run_script" method="POST" enctype="multipart/form-data" >
+        <input type="file" name="words" id="words"><br><br>
+        <textarea cols="50" rows="5" name="sentence" id="sentence"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+
+    <img src="../Result.jpg" alt="" width="600" height="600" style="border: 1px solid black;">
+
+    <!-- <script>
+        $("form").submit(function(e){
+            e.preventDefault()
+            var dat = $(this).serialize()
+            console.log(dat)
+            $.post('/run_script', dat[0] , function(data){
+                console.log(data)
+            })
+        });
+    </script> -->
+
+    <script >
+        console.log($('img').attr('src'))
+    </script>
+    
+</body>
+</html>

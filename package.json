@@ -1,0 +1,27 @@
+{
+  "name": "handwriting-conversion",
+  "version": "1.0.0",
+  "description": "This is to convert input text sentence into a handwritten sentence",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yash2412/Text-to-Handwriting-convertor.git"
+  },
+  "keywords": [
+    "Handwriting",
+    "Convertor"
+  ],
+  "author": "Yash Janoria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yash2412/Text-to-Handwriting-convertor/issues"
+  },
+  "homepage": "https://github.com/Yash2412/Text-to-Handwriting-convertor#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2"
+  }
+}
