@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+
     <div class="container">
         <form id="form" action="/run_script" method="POST" class="col-md-9 mx-auto" enctype="multipart/form-data">
             <div class="form-group">
@@ -49,11 +51,29 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary " style="float: right;">CONVERT</button>
+            <div class="col-md-12" id="load" style="display: none;">
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+            </div>
+
+            <button type="submit" id='submit' class="btn btn-primary " style="float: right;">CONVERT</button>
             
-            <div class="result">
+            <div class="result" style="display: none;">
                 <h4>Output</h4>
-                <a href="../Result.pdf" target="_blank">
+                <a id="res" href="../Result.pdf" target="_blank">
                     Click here to view the Result
                 </a>
             </div>
@@ -62,27 +82,32 @@
 
 
 
-
-    <!-- <script>
-        $("form").submit(function(e){
-            e.preventDefault()
-            var dat = $(this).serialize()
-            console.log(dat)
-            $.post('/run_script', dat[0] , function(data){
-                console.log(data)
-            })
-        });
-    </script> -->
-
     <script>
-        if (<%= showResult %>) {
-            $('.result').show()
-        }
-        else {
-            $('.result').hide()
-        }
-
+        $("#form").submit(function(e) {
+            e.preventDefault();    
+            var formData = new FormData(this);
+            $('#load').show()
+            $('#submit').hide()
+            $.ajax({
+                url: '/run_script',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    if(data){
+                        $('#load').hide()
+                        $('#submit').show()
+                        $('.result').show()
+                        $('#res')[0].click()
+                    }
+                    
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
     </script>
+
 
 </body>
 

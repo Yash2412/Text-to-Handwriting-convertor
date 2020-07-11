@@ -30,8 +30,7 @@ app.post('/run_script', upload.single('words'),(req,res)=>{
     var process = spwan('python',['./Scripts/main.py', sentence, font_size])
 
     process.stdout.on('data', (data)=> {
-        console.log(data)
-        res.render('index',{showResult: true})
+        res.send(true)
     })
     process.stderr.on('data', (data) => {
         console.log(`stderr: ${data}`);
